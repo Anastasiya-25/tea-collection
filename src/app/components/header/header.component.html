@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" [routerLink]="['/']">Logo</a>
+
+    <button class="navbar-toggler" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse show" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Главная</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/tea-collection']" routerLinkActive="active">Каталог</a>
+        </li>
+      </ul>
+      <div class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Поиск чая" [formControl]="searchControl"
+               (search)="onClear($event)"/>
+        <button class="btn btn-outline-primary" type="button" (click)="onSearch()">Поиск</button>
+      </div>
+    </div>
+  </div>
+</nav>

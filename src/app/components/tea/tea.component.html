@@ -1,0 +1,22 @@
+<div class="container">
+  <p class="fs-3 fw-bold text-center mb-5 mt-2">Наши чайные коллекции</p>
+
+    <div class="row justify-content-center" *ngIf="tea">
+      <div class="col-4 mb-4">
+        <div class="card">
+          <img src="{{tea.image}}" class="card-img-top wow animate__pulse" alt="...">
+
+          <div class="card-body">
+            <h5 class="card-title fw-bold">{{ tea.title }}</h5>
+            <p class="card-text">{{tea.description}}</p>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <span class="fs-5 fw-bold text-dark">{{ tea.price }} ₽</span>
+              <a [routerLink]="['/app-form']" [queryParams]="{tea: tea.title}" class="btn btn-primary hvr-float-shadow">Купить</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
+

@@ -1,0 +1,43 @@
+.accordion-button::after {
+  display: block !important;
+  filter: brightness(0) invert(1) !important;
+}
+
+.accordion-button:not(.collapsed)::after {
+  transform: rotate(-180deg);
+}
+
+.accordion-collapse:not(.show) {
+  display: none;
+}
+
+.accordion-collapse.show {
+  display: block;
+  animation: fadeInBootstrap 0.35s ease-out;
+}
+
+@keyframes fadeInBootstrap {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.accordion-button {
+  background: linear-gradient(360deg, #076BFF 0%, #007BFF 100%);
+  border: none;
+  color: white;
+  font-weight: 700;
+}
+
+.carousel-control-next {
+  right: 10px !important;
+  width: 50px !important;
+}
+
+.carousel-control-prev {
+  left: 10px !important;
+  width: 50px !important;
+}

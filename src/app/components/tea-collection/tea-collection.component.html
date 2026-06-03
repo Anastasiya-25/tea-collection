@@ -1,0 +1,28 @@
+<div class="container">
+  <p class="fs-3 fw-bold text-center mb-5">Наши чайные коллекции</p>
+  <div class="container" id="block">
+
+    <div class="row" *ngIf="tea.length > 0; else emptyResult">
+      <div class="col-4 mb-4" *ngFor="let tea of tea">
+        <div class="card">
+          <img src="{{tea.image}}" class="card-img-top wow animate__pulse" alt="...">
+
+          <div class="card-body">
+            <h5 class="card-title fw-bold">{{ tea.title }}</h5>
+            <p class="card-text">{{tea.description | text}}</p>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <span class="fs-5 fw-bold text-dark">{{ tea.price }} ₽</span>
+              <a [routerLink]="['/tea', tea.id]" class="btn btn-primary hvr-float-shadow">Подробнее</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #emptyResult>
+    <div class="text-center my-5">
+      <p class="fs-4 fw-bold text-muted">Ничего не найдено</p>
+    </div>
+  </ng-template>
+</div>
+

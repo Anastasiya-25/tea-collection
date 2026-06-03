@@ -1,0 +1,109 @@
+<div class="container-fluid w-50">
+  <div *ngIf="isSuccess" class="text-center my-5 wow animate__fadeIn">
+    <h2 class="text-primary fw-bold">Спасибо за заказ!</h2>
+    <p class="text-muted">Наш менеджер свяжется с вами в ближайшее время.</p>
+  </div>
+
+
+  <form class="row validate" id="form" [formGroup]="formValues" (ngSubmit)="createOrder()" *ngIf="!isSuccess">
+    <p class="fs-3 fw-bold text-center m-4">Сделать заказ</p>
+    <div class="col-12 mt-2">
+      <label for="inputProduct" class="form-label">Товар</label>
+      <input type="text" class="form-control " id="inputProduct" placeholder="" readonly name="product"
+             formControlName="product">
+      <div class="invalid-feedback" *ngIf="formValues.get('product')?.invalid
+              && formValues.get('product')?.errors?.['required']">
+        Заполните название чая.
+      </div>
+
+    </div>
+    <div class="col-4 mt-2">
+      <label for="name" class="form-label">Имя</label>
+      <input type="text" id="name" class="form-control required name" placeholder=""
+             aria-label="First name" name="name" formControlName="name">
+      <div class="invalid-feedback" *ngIf="formValues.get('name')?.invalid &&
+              (formValues.get('name')?.dirty || formValues.get('name')?.touched)">
+        <div class="text-danger" *ngIf="formValues.get('name')?.errors?.['required']">
+          Заполните имя.
+        </div>
+        <div class="text-danger" *ngIf="formValues.get('name')?.errors?.['pattern']">
+          Для имени допустимы только буквы.
+        </div>
+      </div>
+    </div>
+    <div class="col-4 mt-2">
+      <label for="lastname" class="form-label">Фамилия</label>
+      <input type="text" id="lastname" class="form-control required lastname" placeholder=""
+             aria-label="Last name" name="last_name" formControlName="last_name">
+      <div class="invalid-feedback" *ngIf="formValues.get('last_name')?.invalid &&
+              (formValues.get('last_name')?.dirty || formValues.get('last_name')?.touched)">
+        <div class="text-danger" *ngIf="formValues.get('last_name')?.errors?.['required']">
+          Заполните фамилию.
+        </div>
+        <div class="text-danger" *ngIf="formValues.get('last_name')?.errors?.['pattern']">
+          Для фамилии допустимы только буквы.
+        </div>
+      </div>
+    </div>
+    <div data-mdb-input-init class="col-4 mt-2">
+      <label class="form-label" for="phone">Телефон</label>
+      <input type="tel" id="phone" class="form-control required phone" name="phone" formControlName="phone"/>
+      <div class="invalid-feedback" *ngIf="formValues.get('phone')?.invalid &&
+              (formValues.get('phone')?.dirty || formValues.get('phone')?.touched)">
+        <div class="text-danger" *ngIf="formValues.get('phone')?.errors?.['required']">
+          Заполните номер телефона.
+        </div>
+        <div class="text-danger" *ngIf="formValues.get('phone')?.errors?.['pattern']">
+          Некорректнй номер.
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 mt-2">
+      <label for="inputCity" class="form-label">Страна</label>
+      <input type="text" class="form-control required city" id="inputCity" name="country"
+             formControlName="country">
+      <div class="invalid-feedback" *ngIf="formValues.get('country')?.invalid &&
+              (formValues.get('country')?.dirty || formValues.get('country')?.touched)
+              && formValues.get('country')?.errors?.['required']">
+        Заполните страну.
+      </div>
+    </div>
+    <div class="col-md-6 mt-2">
+      <label for="inputZip" class="form-label">Индекс</label>
+      <input type="number" class="form-control required zip" id="inputZip" name="zip"
+             formControlName="zip">
+      <div class="invalid-feedback" *ngIf="formValues.get('zip')?.invalid &&
+              (formValues.get('zip')?.dirty || formValues.get('zip')?.touched)
+              && formValues.get('zip')?.errors?.['required']">
+        Заполните индекс.
+      </div>
+    </div>
+    <div class="col-12 mt-2">
+      <label for="inputAddress" class="form-label">Адрес</label>
+      <input type="text" class="form-control required address" id="inputAddress" placeholder="" name="address"
+             formControlName="address">
+      <div class="invalid-feedback" *ngIf="formValues.get('address')?.invalid &&
+              (formValues.get('address')?.dirty || formValues.get('address')?.touched)
+              && formValues.get('address')?.errors?.['required']">
+        Заполните адрес.
+      </div>
+    </div>
+    <div class="col-12 mt-2">
+      <label for="inputComment" class="form-label">Комментарий к заказу</label>
+      <input type="text" class="form-control comment" id="inputComment" placeholder="" name="comment"
+             formControlName="comment">
+    </div>
+    <div class="col-12 mt-4">
+      <button type="submit" id="liveAlertBtn" class="btn btn-primary hvr-float-shadow" data-bs-dismiss="alert">
+        Отправить
+      </button>
+
+      <span *ngIf="isError" class="text-danger fw-bold animate__animated animate__shakeX">
+        Произошла ошибка. Попробуйте еще раз.
+      </span>
+    </div>
+  </form>
+  <div id="liveAlertPlaceholder"></div>
+</div>
+
+
