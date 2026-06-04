@@ -2,6 +2,25 @@ body {
   font-family: Arial, sans-serif;
 }
 
+html,
+body {
+  height: 100%;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+app-form, main, tea, tea-collection {
+  flex: 1 0 auto;
+}
+
+.footer {
+  flex: 0 0 auto;
+}
+
 .carousel {
   margin-top: 72px;
   margin-bottom: 72px;

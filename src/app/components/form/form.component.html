@@ -1,7 +1,9 @@
 <div class="container-fluid w-50">
-  <div *ngIf="isSuccess" class="text-center my-5 wow animate__fadeIn">
-    <h2 class="text-primary fw-bold">Спасибо за заказ!</h2>
-    <p class="text-muted">Наш менеджер свяжется с вами в ближайшее время.</p>
+  <div *ngIf="isSuccess" class="d-flex flex-column justify-content-center align-items-center flex-grow-1 my-5">
+    <div class="text-center">
+      <h2 class="text-primary fw-bold">Спасибо за заказ!</h2>
+      <p class="text-muted">Наш менеджер свяжется с вами в ближайшее время.</p>
+    </div>
   </div>
 
 
@@ -94,7 +96,8 @@
              formControlName="comment">
     </div>
     <div class="col-12 mt-4">
-      <button type="submit" id="liveAlertBtn" class="btn btn-primary hvr-float-shadow" data-bs-dismiss="alert">
+      <button id="liveAlertBtn" class="btn btn-primary hvr-float-shadow" data-bs-dismiss="alert"
+              [disabled]="formValues.invalid || formValues.disabled">
         Отправить
       </button>
 
