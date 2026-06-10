@@ -1,0 +1,35 @@
+YAML
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master # Укажите здесь вашу главную ветку (main или master)
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-node: '18' # Стабильная версия для Angular 14
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Angular Application
+        
+        run: npx ng build --configuration production --base-href=/tea/
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist/tea 
+          branch: gh-pages
