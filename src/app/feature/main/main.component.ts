@@ -1,9 +1,10 @@
-import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
-import {AnswersService} from "../../services/answers.service";
-import {AnswerType} from "../../types/answer-type";
+import {AfterViewInit, Component, OnDestroy, OnInit, TemplateRef, ViewChild} from '@angular/core';
+import {AnswersService} from "../../shared/services/answers.service";
+import {AnswerType} from "../../../types/answer-type";
 import {Subscription, timer} from "rxjs";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {TemplateElement} from "@angular/compiler-cli/src/ngtsc/translator";
 
-declare var bootstrap: any;
 
 @Component({
   selector: 'main',
@@ -16,22 +17,21 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
   public answers: AnswerType[] = [];
   private popupSubscription: Subscription | null = null;
 
-  constructor(private answersService: AnswersService) {
+  constructor(private answersService: AnswersService, private modalService: NgbModal) {
   }
+
+  @ViewChild('modal')
+  modal!: TemplateRef<TemplateElement>;
 
   ngOnInit(): void {
     this.answers = this.answersService.getAnswers();
   }
   ngAfterViewInit(): void {
-    const modalElement = document.getElementById('welcomeModal');
-
-    if (modalElement) {
-      // Создаем Observable, который сработает один раз через 10000 миллисекунд (10 секунд)
-      this.popupSubscription = timer(10000).subscribe(() => {
-        const welcomeModal = new bootstrap.Modal(modalElement);
-        welcomeModal.show();
-      });
-    }
+    this.popupSubscription = timer(10000).subscribe(() => {
+      if (this.modal) {
+        this.modalService.open(this.modal, {});
+      }
+    });
   }
 
   ngOnDestroy(): void {

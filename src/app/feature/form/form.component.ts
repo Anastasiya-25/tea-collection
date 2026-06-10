@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {TeaService} from "../../services/tea.service";
+import {TeaService} from "../../core/tea.service";
 import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs";
 import {FormBuilder, Validators} from "@angular/forms";
@@ -13,16 +13,7 @@ export class FormComponent implements OnInit, OnDestroy {
 
   public isSuccess: boolean = false;
   public isError: boolean = false;
-  // formValues = {
-  //   name: '',
-  //   last_name: '',
-  //   phone: '',
-  //   country: '',
-  //   zip: '',
-  //   product: '',
-  //   address: '',
-  //   comment: ''
-  // }
+
   formValues = this.fb.group({
     name: ['', [Validators.required, Validators.pattern('^[A-Za-zА-Яа-яёЁ]+$')]],
     last_name: ['', [Validators.required, Validators.pattern('^[A-Za-zА-Яа-яёЁ]+$')]],

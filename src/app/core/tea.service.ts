@@ -1,11 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {map, Observable, Subject} from "rxjs";
-import {TeaType} from "../types/tea-type";
+import {TeaType} from "../../types/tea-type";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class TeaService {
   private searchSubject = new Subject<string>();
   public search$ = this.searchSubject.asObservable();

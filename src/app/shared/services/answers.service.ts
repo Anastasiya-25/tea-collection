@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {AnswerType} from "../types/answer-type";
+import {AnswerType} from "../../../types/answer-type";
 
 @Injectable()
 

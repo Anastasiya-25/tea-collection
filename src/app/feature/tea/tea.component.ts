@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {TeaType} from "../../types/tea-type";
+import {TeaType} from "../../../types/tea-type";
 import {HttpClient} from "@angular/common/http";
-import {TeaService} from "../../services/tea.service";
+import {TeaService} from "../../core/tea.service";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({

@@ -1,7 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {TeaType} from "../../types/tea-type";
-import {HttpClient} from "@angular/common/http";
-import {TeaService} from "../../services/tea.service";
+import {TeaType} from "../../../types/tea-type";
+import {TeaService} from "../../core/tea.service";
 import {Subscription} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 

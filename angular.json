@@ -28,15 +28,11 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/jquery-ui/themes/base/all.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/animate.css/animate.min.css",
               "node_modules/hover.css/css/hover-min.css",
               "src/styles.scss"
             ],
-            "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.js",
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
