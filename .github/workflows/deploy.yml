@@ -24,7 +24,7 @@ jobs:
 
       - name: Build Angular Application
         
-        run: npx ng build --configuration production --base-href=/tea/
+        run: npx ng build --configuration production --base-href=/tea-collection/
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
